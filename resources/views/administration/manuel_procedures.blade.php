@@ -4,7 +4,7 @@
     <div class="max-w-7xl mx-auto p-6 bg-white rounded-lg shadow-md">
         <!-- Breadcrumb -->
         <nav class="text-sm text-gray-600 mb-4">
-            <a href="{{ route('administration.index') }}" class="text-blue-600 hover:underline">Administration</a>
+            <span class="text-gray-800">Administration</span>
             <span class="mx-2">></span>
             <span class="text-gray-800">Manuel de procédures</span>
         </nav>

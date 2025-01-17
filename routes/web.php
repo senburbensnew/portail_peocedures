@@ -11,6 +11,7 @@ use App\Http\Controllers\ComptabiliteController;
 use App\Http\Controllers\TextesLegauxController;
 use App\Http\Controllers\MatérielController;
 use App\Http\Controllers\GeneraliteController;
+use App\Http\Controllers\DocumentController;
 
 
 /*
@@ -63,26 +64,26 @@ Route::prefix('comptes-payer')->name('comptes-payer.')->group(function () {
     Route::get('formulaires', [ComptesController::class, 'formulaires'])->name('formulaires');
 
     // Formulaires Fournisseur national
-    Route::get('formulaire/ouverture-compte-national', [ComptesPayerController::class, 'ouvertureCompteNational'])->name('formulaire.ouverture-compte-national');
-    Route::get('formulaire/suspension-compte-national', [ComptesPayerController::class, 'suspensionCompteNational'])->name('formulaire.suspension-compte-national');
-    Route::get('formulaire/radiation-compte-national', [ComptesPayerController::class, 'radiationCompteNational'])->name('formulaire.radiation-compte-national');
+    Route::get('formulaire/ouverture-compte-national', [ComptesController::class, 'ouvertureCompteNational'])->name('formulaire.ouverture-compte-national');
+    Route::get('formulaire/suspension-compte-national', [ComptesController::class, 'suspensionCompteNational'])->name('formulaire.suspension-compte-national');
+    Route::get('formulaire/radiation-compte-national', [ComptesController::class, 'radiationCompteNational'])->name('formulaire.radiation-compte-national');
 
     // Formulaires Fournisseur étranger
-    Route::get('formulaire/ouverture-compte-etranger', [ComptesPayerController::class, 'ouvertureCompteEtranger'])->name('formulaire.ouverture-compte-etranger');
-    Route::get('formulaire/suspension-compte-etranger', [ComptesPayerController::class, 'suspensionCompteEtranger'])->name('formulaire.suspension-compte-etranger');
-    Route::get('formulaire/radiation-compte-etranger', [ComptesPayerController::class, 'radiationCompteEtranger'])->name('formulaire.radiation-compte-etranger');
+    Route::get('formulaire/ouverture-compte-etranger', [ComptesController::class, 'ouvertureCompteEtranger'])->name('formulaire.ouverture-compte-etranger');
+    Route::get('formulaire/suspension-compte-etranger', [ComptesController::class, 'suspensionCompteEtranger'])->name('formulaire.suspension-compte-etranger');
+    Route::get('formulaire/radiation-compte-etranger', [ComptesController::class, 'radiationCompteEtranger'])->name('formulaire.radiation-compte-etranger');
 
     // Formulaires Agent de carrière
-    Route::get('formulaire/ouverture-compte-carriere', [ComptesPayerController::class, 'ouvertureCompteCarriere'])->name('formulaire.ouverture-compte-carriere');
-    Route::get('formulaire/desactivation-compte-carriere', [ComptesPayerController::class, 'desactivationCompteCarriere'])->name('formulaire.desactivation-compte-carriere');
+    Route::get('formulaire/ouverture-compte-carriere', [ComptesController::class, 'ouvertureCompteCarriere'])->name('formulaire.ouverture-compte-carriere');
+    Route::get('formulaire/desactivation-compte-carriere', [ComptesController::class, 'desactivationCompteCarriere'])->name('formulaire.desactivation-compte-carriere');
 
     // Formulaires Agent contractuel
-    Route::get('formulaire/ouverture-compte-contractuel', [ComptesPayerController::class, 'ouvertureCompteContractuel'])->name('formulaire.ouverture-compte-contractuel');
-    Route::get('formulaire/desactivation-compte-contractuel', [ComptesPayerController::class, 'desactivationCompteContractuel'])->name('formulaire.desactivation-compte-contractuel');
+    Route::get('formulaire/ouverture-compte-contractuel', [ComptesController::class, 'ouvertureCompteContractuel'])->name('formulaire.ouverture-compte-contractuel');
+    Route::get('formulaire/desactivation-compte-contractuel', [ComptesController::class, 'desactivationCompteContractuel'])->name('formulaire.desactivation-compte-contractuel');
 
     // Formulaires Autres agents
-    Route::get('formulaire/ouverture-compte-autre-agent', [ComptesPayerController::class, 'ouvertureCompteAutreAgent'])->name('formulaire.ouverture-compte-autre-agent');
-    Route::get('formulaire/desactivation-compte-autre-agent', [ComptesPayerController::class, 'desactivationCompteAutreAgent'])->name('formulaire.desactivation-compte-autre-agent');
+    Route::get('formulaire/ouverture-compte-autre-agent', [ComptesController::class, 'ouvertureCompteAutreAgent'])->name('formulaire.ouverture-compte-autre-agent');
+    Route::get('formulaire/desactivation-compte-autre-agent', [ComptesController::class, 'desactivationCompteAutreAgent'])->name('formulaire.desactivation-compte-autre-agent');
 });
 
 
@@ -113,6 +114,9 @@ Route::prefix('textes-legaux')->name('textes-legaux.')->group(function () {
 Route::prefix('materiel')->name('materiel.')->group(function () {
     Route::get('/', [MatérielController::class, 'index'])->name('index');
 });
+
+Route::get('/documents/upload', [DocumentController::class, 'index'])->name('documents.index');
+Route::post('/documents/upload', [DocumentController::class, 'upload'])->name('documents.upload');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
