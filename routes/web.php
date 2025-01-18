@@ -12,6 +12,7 @@ use App\Http\Controllers\TextesLegauxController;
 use App\Http\Controllers\MatérielController;
 use App\Http\Controllers\GeneraliteController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 
 /*
@@ -117,6 +118,9 @@ Route::prefix('materiel')->name('materiel.')->group(function () {
 
 Route::get('/documents/upload', [DocumentController::class, 'index'])->name('documents.index');
 Route::post('/documents/upload', [DocumentController::class, 'upload'])->name('documents.upload');
+
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
