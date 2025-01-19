@@ -315,25 +315,24 @@
                             class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a> --}}
                         @if (auth()->user()->hasRole('admin'))
                             <a href="{{ route('documents.index') }}"
-                                class="mr-4  font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Admin</a>
+                                class="mr-4  font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">admin</a>
+                        @endif
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}"
+                                class="mr-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">creer
+                                utilisateur</a>
                         @endif
                         @if (auth()->check())
                             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                 @csrf
                                 <button type="submit" class="text-red-600 hover:text-red-800 focus:outline-none">
-                                    Deconnexion
+                                    deconnexion
                                 </button>
                             </form>
                         @endif
                     @else
                         <a href="{{ route('login') }}"
-                            class="font-semibold text-blue-600 hover:text-blue-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-                            in</a>
-
-                        {{--                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}"
-                                class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif --}}
+                            class="font-semibold text-blue-600 hover:text-blue-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Connexion</a>
                     @endauth
                 </div>
             @endif

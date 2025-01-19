@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProcedureController;
 use App\Http\Controllers\AdministrationController;
 use App\Http\Controllers\ExecutionController;
 use App\Http\Controllers\ComptesController;
@@ -116,8 +115,10 @@ Route::prefix('materiel')->name('materiel.')->group(function () {
     Route::get('/', [MatérielController::class, 'index'])->name('index');
 });
 
-Route::get('/documents/upload', [DocumentController::class, 'index'])->name('documents.index');
-Route::post('/documents/upload', [DocumentController::class, 'upload'])->name('documents.upload');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/documents/upload', [DocumentController::class, 'index'])->name('documents.index');
+    Route::post('/documents/upload', [DocumentController::class, 'upload'])->name('documents.upload');
+});
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');

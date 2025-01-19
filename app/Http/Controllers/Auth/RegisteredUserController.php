@@ -15,6 +15,13 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
+
+    public function __construct()
+    {
+        // Apply 'auth' and 'admin' middleware to the registration routes
+        // $this->middleware(['auth', 'admin'])->only(['create', 'store']);
+    }
+    
     /**
      * Display the registration view.
      */
