@@ -311,28 +311,37 @@
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     @auth
-                        {{-- <a href="{{ url('/dashboard') }}"
-                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a> --}}
                         @if (auth()->user()->hasRole('admin'))
                             <a href="{{ route('documents.index') }}"
-                                class="mr-4  font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">admin</a>
+                                class="mr-2 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                                téléverser
+                            </a>
                         @endif
+
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"
-                                class="mr-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">creer
-                                utilisateur</a>
+                                class="mr-2 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                                créer utilisateur
+                            </a>
                         @endif
+
                         @if (auth()->check())
+                            <span class="mr-2 text-gray-400">|</span>
+                            <span class="mr-2 font-bold text-gray-800 underline dark:text-gray-200">
+                                {{ auth()->user()->name }}
+                            </span>
                             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                 @csrf
                                 <button type="submit" class="text-red-600 hover:text-red-800 focus:outline-none">
-                                    deconnexion
+                                    déconnexion
                                 </button>
                             </form>
                         @endif
                     @else
                         <a href="{{ route('login') }}"
-                            class="font-semibold text-blue-600 hover:text-blue-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Connexion</a>
+                            class="font-semibold text-blue-600 hover:text-blue-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                            connexion
+                        </a>
                     @endauth
                 </div>
             @endif

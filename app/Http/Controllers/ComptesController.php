@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 
 class ComptesController extends Controller
 {
-    public function index()
+    public function manuelProcedures()
     {
-        return view('comptes_payer.index');
+        return view('comptes_payer.manuel_procedures');
+    }
+
+    public function manuelUtilisateur()
+    {
+        return view('comptes_payer.manuel_utilisateur');
     }
 }

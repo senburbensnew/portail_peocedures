@@ -6,7 +6,7 @@
         <nav class="text-sm text-gray-600 mb-4">
             <span class="text-gray-800">Documents</span>
             <span class="mx-2">></span>
-            <span class="text-gray-800">Televerser</span>
+            <span class="text-gray-800">Téléverser</span>
         </nav>
 
         <!-- Upload PDF Form -->
@@ -17,11 +17,24 @@
                     <label for="pdf_name" class="block text-sm font-medium text-gray-700">Choisir le document</label>
                     <select id="pdf_name" name="pdf_name"
                         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                        <option value="manual1">Administration - Manuel des procedures</option>
-                        <option value="manual2">Administration - Manuel des utilisateurs</option>
-                        <option value="manual1">Execution budgetaire - Manuel des procedures</option>
-                        <option value="manual2">Execution budgetaire - Manuel des utilisateurs</option>
-                        <!-- Add more options here -->
+                        <option value="administration-mp" selected>Administration - Manuel des procédures</option>
+                        <option value="administration-mu">Administration - Manuel des utilisateurs</option>
+                        <option value="catalogue-dbs">Catalogue - Demande de biens et de services</option>
+                        <option value="catalogue-mp">Catalogue - Manuel des procédures</option>
+                        <option value="catalogue-mu">Catalogue - Manuel des utilisateurs</option>
+                        <option value="comptabilite-nb">Comptabilité - Nomenclatures budgétaires</option>
+                        <option value="comptabilite-npj">Comptabilité - Nomenclature des pièces justificatives</option>
+                        <option value="comptabilite-pceh">Comptabilité - PCEH détaillé</option>
+                        <option value="comptes-payer-mp">Comptes à payer - Manuel des procédures</option>
+                        <option value="comptes-payer-mu">Comptes à payer - Manuel des utilisateurs</option>
+                        <option value="execution-budgetaire-mp">Exécution budgétaire - Manuel des procédures</option>
+                        <option value="execution-budgetaire-mu">Exécution budgétaire - Manuel des utilisateurs</option>
+                        <option value="materiel-informatif-pedagogique">Matériel informatif et pédagogique</option>
+                        <option value="textes-legaux-apch">Textes légaux et réglementaires - Arrêté portant Plan comptable
+                            haïtien</option>
+                        <option value="textes-legaux-apnb">Textes légaux et réglementaires - Arrêté portant nomenclatures
+                            budgétaires</option>
+                        <option value="textes-legaux-lo">Textes légaux et réglementaires - Loi organique</option>
                     </select>
                 </div>
 
@@ -38,5 +51,29 @@
                 </button>
             </form>
         </div>
+        <!-- Display error for the pdf_file input if there's any validation issue -->
+        @error('pdf_file')
+            <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
+        @enderror
     </div>
+
+    <!-- Flash Messages -->
+    @if (session('success'))
+        <div id="toast-success" class="fixed top-4 px-4 py-2 bg-green-600 text-white rounded shadow-lg">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <!-- JavaScript to Auto-hide Toast after a few seconds -->
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                var successToast = document.getElementById('toast-success');
+
+                if (successToast) {
+                    successToast.style.display = 'none';
+                }
+            }, 5000); // Hide after 5 seconds
+        };
+    </script>
 @endsection

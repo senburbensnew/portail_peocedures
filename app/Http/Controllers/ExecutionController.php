@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 
 class ExecutionController extends Controller
 {
-    public function index()
+    public function manuelProcedures()
     {
-        return view('execution_budgetaire.index');
+        return view('execution_budgetaire.manuel_procedures');
+    }
+
+    public function manuelUtilisateur()
+    {
+        return view('execution_budgetaire.manuel_utilisateur');
     }
 }

@@ -9,12 +9,12 @@ class CatalogueController extends Controller
 
     public function manuelProcedures()
     {
-        return view('administration.manuel_procedures');
+        return view('catalogue.manuel_procedures');
     }
 
     public function manuelUtilisateur()
     {
-        return view('administration.manuel_utilisateur');
+        return view('catalogue.manuel_utilisateur');
     }
 
     public function demandeBiensServices()
