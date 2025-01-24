@@ -59,7 +59,7 @@
 
     <!-- Flash Messages -->
     @if (session('success'))
-        <div id="toast-success" class="fixed top-4 px-4 py-2 bg-green-600 text-white rounded shadow-lg">
+        <div id="toast-success" class="fixed top-4 px-4 py-2 bg-green-500 text-white rounded shadow-lg">
             {{ session('success') }}
         </div>
     @endif
