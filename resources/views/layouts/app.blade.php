@@ -102,104 +102,114 @@
                                     Manuel de l’utilisateur
                                 </a>
                             </li>
-                            <!-- Formulaires -->
-                            <li>
-                                <button class="w-full text-left text-black-600  focus:outline-none font-medium"
-                                    id="formulaires-accordion"
-                                    onclick="toggleAccordion('formulaires-accordion-content', this)">
-                                    <span id="formulaires-sign">+</span> Formulaires
-                                </button>
-                                <ul id="formulaires-accordion-content" class="hidden pl-4 mt-2 space-y-2">
-                                    <!-- Fournisseur national -->
+                            @auth
+                                @if (auth()->user()->hasRole('admin'))
+                                    <!-- Formulaires -->
                                     <li>
-                                        <button class="w-full text-left text-black-600 focus:outline-none"
-                                            id="fournisseur-national-accordion"
-                                            onclick="toggleAccordion('fournisseur-national-accordion-content', this)">
-                                            <span id="fournisseur-national-sign">+</span> Fournisseur national
+                                        <button class="w-full text-left text-black-600  focus:outline-none font-medium"
+                                            id="formulaires-accordion"
+                                            onclick="toggleAccordion('formulaires-accordion-content', this)">
+                                            <span id="formulaires-sign">+</span> Formulaires
                                         </button>
-                                        <ul id="fournisseur-national-accordion-content"
-                                            class="hidden pl-6 mt-2 space-y-2">
-                                            <li><a href="{{ route('comptes-payer.formulaire.ouverture-compte-national') }}"
-                                                    class="block text-blue-600 hover:text-blue-800">Ouverture de
-                                                    compte</a></li>
-                                            <li><a href="{{ route('comptes-payer.formulaire.suspension-compte-national') }}"
-                                                    class="block text-blue-600 hover:text-blue-800">Suspension de
-                                                    compte</a></li>
-                                            <li><a href="{{ route('comptes-payer.formulaire.radiation-compte-national') }}"
-                                                    class="block text-blue-600 hover:text-blue-800">Radiation de
-                                                    compte</a></li>
+                                        <ul id="formulaires-accordion-content" class="hidden pl-4 mt-2 space-y-2">
+                                            <!-- Fournisseur national -->
+                                            <li>
+                                                <button class="w-full text-left text-black-600 focus:outline-none"
+                                                    id="fournisseur-national-accordion"
+                                                    onclick="toggleAccordion('fournisseur-national-accordion-content', this)">
+                                                    <span id="fournisseur-national-sign">+</span> Fournisseur national
+                                                </button>
+                                                <ul id="fournisseur-national-accordion-content"
+                                                    class="hidden pl-6 mt-2 space-y-2">
+                                                    <li><a href="{{ route('comptes-payer.formulaire.ouverture-compte-national') }}"
+                                                            class="block text-blue-600 hover:text-blue-800">Ouverture de
+                                                            compte</a></li>
+                                                    <li><a href="{{ route('comptes-payer.formulaire.suspension-compte-national') }}"
+                                                            class="block text-blue-600 hover:text-blue-800">Suspension de
+                                                            compte</a></li>
+                                                    <li><a href="{{ route('comptes-payer.formulaire.radiation-compte-national') }}"
+                                                            class="block text-blue-600 hover:text-blue-800">Radiation de
+                                                            compte</a></li>
+                                                </ul>
+                                            </li>
+                                            <!-- Fournisseur étranger -->
+                                            <li>
+                                                <button class="w-full text-left text-black-600 focus:outline-none"
+                                                    id="fournisseur-etranger-accordion"
+                                                    onclick="toggleAccordion('fournisseur-etranger-accordion-content', this)">
+                                                    <span id="fournisseur-etranger-sign">+</span> Fournisseur étranger
+                                                </button>
+                                                <ul id="fournisseur-etranger-accordion-content"
+                                                    class="hidden pl-6 mt-2 space-y-2">
+                                                    <li><a href="{{ route('comptes-payer.formulaire.ouverture-compte-etranger') }}"
+                                                            class="block text-blue-600 hover:text-blue-800">Ouverture de
+                                                            compte</a></li>
+                                                    <li><a href="{{ route('comptes-payer.formulaire.suspension-compte-etranger') }}"
+                                                            class="block text-blue-600 hover:text-blue-800">Suspension de
+                                                            compte</a></li>
+                                                    <li><a href="{{ route('comptes-payer.formulaire.radiation-compte-etranger') }}"
+                                                            class="block text-blue-600 hover:text-blue-800">Radiation de
+                                                            compte</a></li>
+                                                </ul>
+                                            </li>
+                                            <!-- Agent de carrière -->
+                                            <li>
+                                                <button class="w-full text-left text-black-600 focus:outline-none"
+                                                    id="agent-carriere-accordion"
+                                                    onclick="toggleAccordion('agent-carriere-accordion-content', this)">
+                                                    <span id="agent-carriere-sign">+</span> Agent de carrière
+                                                </button>
+                                                <ul id="agent-carriere-accordion-content"
+                                                    class="hidden pl-6 mt-2 space-y-2">
+                                                    <li><a href="{{ route('comptes-payer.formulaire.ouverture-compte-carriere') }}"
+                                                            class="block text-blue-600 hover:text-blue-800">Ouverture de
+                                                            compte</a></li>
+                                                    <li><a href="{{ route('comptes-payer.formulaire.desactivation-compte-carriere') }}"
+                                                            class="block text-blue-600 hover:text-blue-800">Désactivation de
+                                                            compte</a></li>
+                                                </ul>
+                                            </li>
+                                            <!-- Agent contractuel -->
+                                            <li>
+                                                <button class="w-full text-left text-black-600 focus:outline-none"
+                                                    id="agent-contractuel-accordion"
+                                                    onclick="toggleAccordion('agent-contractuel-accordion-content', this)">
+                                                    <span id="agent-contractuel-sign">+</span> Agent contractuel
+                                                </button>
+                                                <ul id="agent-contractuel-accordion-content"
+                                                    class="hidden pl-6 mt-2 space-y-2">
+                                                    <li><a href="{{ route('comptes-payer.formulaire.ouverture-compte-contractuel') }}"
+                                                            class="block text-blue-600 hover:text-blue-800">Ouverture de
+                                                            compte</a></li>
+                                                    <li><a href="{{ route('comptes-payer.formulaire.desactivation-compte-contractuel') }}"
+                                                            class="block text-blue-600 hover:text-blue-800">Désactivation
+                                                            de
+                                                            compte</a></li>
+                                                </ul>
+                                            </li>
+                                            <!-- Autres agents -->
+                                            <li>
+                                                <button
+                                                    class="w-full text-left text-black-600 focus:outline-none focus:ring-2"
+                                                    id="autres-agents-accordion"
+                                                    onclick="toggleAccordion('autres-agents-accordion-content', this)">
+                                                    <span id="autres-agents-sign">+</span> Autres agents
+                                                </button>
+                                                <ul id="autres-agents-accordion-content"
+                                                    class="hidden pl-6 mt-2 space-y-2">
+                                                    <li><a href="{{ route('comptes-payer.formulaire.ouverture-compte-autre-agent') }}"
+                                                            class="block text-blue-600 hover:text-blue-800">Ouverture de
+                                                            compte</a></li>
+                                                    <li><a href="{{ route('comptes-payer.formulaire.desactivation-compte-autre-agent') }}"
+                                                            class="block text-blue-600 hover:text-blue-800">Désactivation
+                                                            de
+                                                            compte</a></li>
+                                                </ul>
+                                            </li>
                                         </ul>
                                     </li>
-                                    <!-- Fournisseur étranger -->
-                                    <li>
-                                        <button class="w-full text-left text-black-600 focus:outline-none"
-                                            id="fournisseur-etranger-accordion"
-                                            onclick="toggleAccordion('fournisseur-etranger-accordion-content', this)">
-                                            <span id="fournisseur-etranger-sign">+</span> Fournisseur étranger
-                                        </button>
-                                        <ul id="fournisseur-etranger-accordion-content"
-                                            class="hidden pl-6 mt-2 space-y-2">
-                                            <li><a href="{{ route('comptes-payer.formulaire.ouverture-compte-etranger') }}"
-                                                    class="block text-blue-600 hover:text-blue-800">Ouverture de
-                                                    compte</a></li>
-                                            <li><a href="{{ route('comptes-payer.formulaire.suspension-compte-etranger') }}"
-                                                    class="block text-blue-600 hover:text-blue-800">Suspension de
-                                                    compte</a></li>
-                                            <li><a href="{{ route('comptes-payer.formulaire.radiation-compte-etranger') }}"
-                                                    class="block text-blue-600 hover:text-blue-800">Radiation de
-                                                    compte</a></li>
-                                        </ul>
-                                    </li>
-                                    <!-- Agent de carrière -->
-                                    <li>
-                                        <button class="w-full text-left text-black-600 focus:outline-none"
-                                            id="agent-carriere-accordion"
-                                            onclick="toggleAccordion('agent-carriere-accordion-content', this)">
-                                            <span id="agent-carriere-sign">+</span> Agent de carrière
-                                        </button>
-                                        <ul id="agent-carriere-accordion-content" class="hidden pl-6 mt-2 space-y-2">
-                                            <li><a href="{{ route('comptes-payer.formulaire.ouverture-compte-carriere') }}"
-                                                    class="block text-blue-600 hover:text-blue-800">Ouverture de
-                                                    compte</a></li>
-                                            <li><a href="{{ route('comptes-payer.formulaire.desactivation-compte-carriere') }}"
-                                                    class="block text-blue-600 hover:text-blue-800">Désactivation de
-                                                    compte</a></li>
-                                        </ul>
-                                    </li>
-                                    <!-- Agent contractuel -->
-                                    <li>
-                                        <button class="w-full text-left text-black-600 focus:outline-none"
-                                            id="agent-contractuel-accordion"
-                                            onclick="toggleAccordion('agent-contractuel-accordion-content', this)">
-                                            <span id="agent-contractuel-sign">+</span> Agent contractuel
-                                        </button>
-                                        <ul id="agent-contractuel-accordion-content" class="hidden pl-6 mt-2 space-y-2">
-                                            <li><a href="{{ route('comptes-payer.formulaire.ouverture-compte-contractuel') }}"
-                                                    class="block text-blue-600 hover:text-blue-800">Ouverture de
-                                                    compte</a></li>
-                                            <li><a href="{{ route('comptes-payer.formulaire.desactivation-compte-contractuel') }}"
-                                                    class="block text-blue-600 hover:text-blue-800">Désactivation de
-                                                    compte</a></li>
-                                        </ul>
-                                    </li>
-                                    <!-- Autres agents -->
-                                    <li>
-                                        <button class="w-full text-left text-black-600 focus:outline-none focus:ring-2"
-                                            id="autres-agents-accordion"
-                                            onclick="toggleAccordion('autres-agents-accordion-content', this)">
-                                            <span id="autres-agents-sign">+</span> Autres agents
-                                        </button>
-                                        <ul id="autres-agents-accordion-content" class="hidden pl-6 mt-2 space-y-2">
-                                            <li><a href="{{ route('comptes-payer.formulaire.ouverture-compte-autre-agent') }}"
-                                                    class="block text-blue-600 hover:text-blue-800">Ouverture de
-                                                    compte</a></li>
-                                            <li><a href="{{ route('comptes-payer.formulaire.desactivation-compte-autre-agent') }}"
-                                                    class="block text-blue-600 hover:text-blue-800">Désactivation de
-                                                    compte</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
+                                @endif
+                            @endauth
                         </ul>
                     </li>
                     <!-- Catalogue -->
